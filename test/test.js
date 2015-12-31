@@ -34,6 +34,7 @@ describe("server", function() {
 
         // Write data to the file.
         fs.writeFileSync(fixturePath, "google");
+        //console.log('\n \n \n WRITTEN FILE EXCERPT \n \n \n ', fs.readFileSync(JSON.stringify(fixturePath)));
 
         request
           .get("/" + fixtureName)
