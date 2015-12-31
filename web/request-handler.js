@@ -7,7 +7,7 @@ var fs = require('fs');
 exports.handleRequest = function (req, res) {
   
   if (req.method === "GET"){
-    console.log('\n \n \n REQUEST URL\n \n \n ', req.url);
+   // console.log('\n \n \n REQUEST URL\n \n \n ', req.url);
 
       var reqUrl = req.url;
       var isPresent = 'not set';
@@ -25,7 +25,7 @@ exports.handleRequest = function (req, res) {
           // }); 
 
 
-          console.log('this is the current url: ', reqUrl);
+        //  console.log('this is the current url: ', reqUrl);
           if (reqUrl === "/"){
             fs.readFile(archive.paths.homepage, function (err, html) {
               helper.serveAssets(res, html);
@@ -51,9 +51,9 @@ exports.handleRequest = function (req, res) {
   if(req.method === "POST"){
   var str = "";
     req.on('data', function(chunk){
-      console.log(chunk);
+    //  console.log(chunk);
       str = JSON.parse(chunk);
-      console.log('YOYOYOYOYOYOYO', str)
+      //console.log('YOYOYOYOYOYOYO', str)
       fs.writeFile(archive.paths.list, str.url + '\n', 'utf8', function (err, chunk){
         if(err) {
           return console.log(err);

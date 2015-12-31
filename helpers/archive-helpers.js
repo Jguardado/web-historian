@@ -1,6 +1,7 @@
 var fs = require('fs');
 var path = require('path');
 var _ = require('underscore');
+//var helper = require('http-helper');
 
 /*
  * You will need to reuse the same paths many times over in the course of this sprint.
@@ -26,17 +27,36 @@ exports.initialize = function(pathsObj){
 // The following function names are provided to you to suggest how you might
 // modularize your code. Keep it clean!
 
-exports.readListOfUrls = function(){
+exports.readListOfUrls = function(callback){
+  fs.readFile(exports.paths.list, 'utf8', function (err, data){
+    var arr = data.split('\n');
+
+    callback(arr);
+
+  });
+
+  
+  
+
 };
 
-exports.isUrlInList = function(){
+exports.isUrlInList = function(url, callback){
+  fs.access(exports.paths.archivedSites + url, fs.F_OK, callback);
 };
 
-exports.addUrlToList = function(){
+exports.addUrlToList = function(url, callback){
+  fs.writeFile(exports.paths.list, url, 'utf8', callback);
 };
 
-exports.isUrlArchived = function(){
+exports.isUrlArchived = function(url, callback){
+  fs.access(exports.paths.archivedSites + url, 'utf8', callback);
 };
 
-exports.downloadUrls = function(){
+exports.downloadUrls = function(array){
+  for (var i = 0; i < array.length; i++) {
+    console.log('EXPORTING INTO THIS DIRECTORY', exports.paths.archivedSites + array[i]); 
+    fs.writeFile(exports.paths.archivedSites + '/' + array[i], 'utf8');
+    //fs.writeFile(exports.paths.archivedSites, "www.google.com");
+
+  };
 };
