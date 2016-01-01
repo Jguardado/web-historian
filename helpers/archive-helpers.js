@@ -45,7 +45,7 @@ exports.isUrlInList = function(url, callback){
 };
 
 exports.addUrlToList = function(url, callback){
-  fs.writeFile(exports.paths.list, url, 'utf8', callback);
+  fs.writeFile(exports.paths.list, url + '\n', 'utf8', callback);
 };
 
 exports.isUrlArchived = function(url, callback){
@@ -54,7 +54,7 @@ exports.isUrlArchived = function(url, callback){
 
 exports.downloadUrls = function(array){
   for (var i = 0; i < array.length; i++) {
-    console.log('EXPORTING INTO THIS DIRECTORY', exports.paths.archivedSites + array[i]); 
+     
     fs.writeFile(exports.paths.archivedSites + '/' + array[i], 'utf8');
     //fs.writeFile(exports.paths.archivedSites, "www.google.com");
 

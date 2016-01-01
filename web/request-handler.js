@@ -2,10 +2,17 @@ var path = require('path');
 var archive = require('../helpers/archive-helpers');
 var helper = require('./http-helpers.js');
 var fs = require('fs');
+//var html = require('./public/index.html');
 // require more modules/folders here!
 
+
+
+// html.response.on('submit', function(info){
+//   console.log(info);
+// });
+
 exports.handleRequest = function (req, res) {
-  
+  //debugger;
   if (req.method === "GET"){
    // console.log('\n \n \n REQUEST URL\n \n \n ', req.url);
 
@@ -49,18 +56,15 @@ exports.handleRequest = function (req, res) {
 
 
   if(req.method === "POST"){
-  var str = "";
     req.on('data', function(chunk){
-    //  console.log(chunk);
-      str = JSON.parse(chunk);
-      //console.log('YOYOYOYOYOYOYO', str)
-      fs.writeFile(archive.paths.list, str.url + '\n', 'utf8', function (err, chunk){
-        if(err) {
-          return console.log(err);
-        }
+
+      console.log(chunk.toString());
+      var str = chunk.toString();
+      var gold = str.split('=');
+      archive.addUrlToList(gold[1], function(){
         res.writeHead(302, headers);
-        res.end();
-      });
+        res.end('Added');
+    })
       
     })
   }
