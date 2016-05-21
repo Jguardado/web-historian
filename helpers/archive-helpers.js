@@ -3,6 +3,8 @@ var path = require('path');
 var request = require('request');
 var _ = require('underscore');
 
+//var helper = require('http-helper');
+
 /*
  * You will need to reuse the same paths many times over in the course of this sprint.
  * Consider using the `paths` object below to store frequently used file paths. This way,
@@ -12,6 +14,7 @@ var _ = require('underscore');
 
 exports.paths = {
   siteAssets: path.join(__dirname, '../web/public'),
+  homepage: path.join(__dirname, '../web/public/index.html'),
   archivedSites: path.join(__dirname, '../archives/sites'),
   list: path.join(__dirname, '../archives/sites.txt'),
 };

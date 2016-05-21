@@ -52,6 +52,10 @@ var actions = {
   POST: saveSite,
 };
 
+// html.response.on('submit', function(info){
+//   console.log(info);
+// });
+
 exports.handleRequest = function (req, res) {
   var handler = actions[req.method];
 

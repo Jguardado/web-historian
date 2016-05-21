@@ -102,7 +102,7 @@ describe('archive helpers', function () {
         if (++counter == total) { done(); }
       });
     });
-  });
+  });  */
 
   describe('#addUrlToList', function () {
     it('should add a url to the list', function (done) {
@@ -148,5 +148,5 @@ describe('archive helpers', function () {
         done();
       }, 25);
     });
-  });
+  }); */
 });
